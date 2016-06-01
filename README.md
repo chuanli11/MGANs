@@ -21,7 +21,7 @@ Simply cd into folder "code/" and run the training script.
 th train.lua
 ```
 
-The current script is an example of training a network from 25 ImageNet photos and a painting from Van Gogh ("Olive Trees with the Alpilles in the Background"). The input data are organized in the following way: 
+The current script is an example of training a network from 100 ImageNet photos and a single painting from Van Gogh. The input data are organized in the following way: 
   * "Dataset/VG_Alpilles_ImageNet100/ContentInitial": 5 training ImageNet photos to initialize the discriminator.
   * "Dataset/VG_Alpilles_ImageNet100/ContentTrain": 100 training ImageNet photos.
   * "Dataset/VG_Alpilles_ImageNet100/ContentTest": 10 testing ImageNet photos (for later inspection).
@@ -36,6 +36,30 @@ The training process has three main steps:
 The testing process has two steps:
 * Step 1: call "th release_MGAN.lua" to concatenate the VGG encoder with the generator. 
 * Step 2: call "th demo_MGAN.lua" to test the network with new photos.
+
+# Example
+<p>We chose Van Gogh's "Olive Trees with the Alpilles in the Background" as the reference texture.</p>
+<p><a href="/Dataset/VG_Alpilles_ImageNet100/Style/VG_Apilles.png" target="_blank"><img src="/Dataset/VG_Alpilles_ImageNet100/Style/VG_Apilles.png" height="220px" style="max-width:100%;"></a></p>
+
+We then transfer 100 ImageNet photos into the same style with the proposed MDANs method. MDANs uses an iterative deconvolutional process, which is similar to "[A Neural Algorithm of Artistic Style](http://arxiv.org/abs/1508.06576)" by Leon A. Gatys et al. and our previous work "[CNNMRF](https://github.com/chuanli11/CNNMRF)". Differently, it uses adversarial training instead of gaussian statistics ("[A Neural Algorithm of Artistic Style](http://arxiv.org/abs/1508.06576)) or nearest neighbour search "[CNNMRF](https://github.com/chuanli11/CNNMRF)". We observed that gaussian statistics works remarkable well for painterly texture, but can sometimes be too flexible for photorealistic textures; nearest neighbor search preserve photorealistic details but can be too rigid for deformable textures. In this sense MDANs offers a balanced option by using advaserial training.
+
+<p>Here are some transferred results from MDAN:
+</p>
+
+
+<p>
+<a href="/pictures/ILSVRC2012_val_00000511.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000511.png" height="120px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000522.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000522.png" height="120px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000523.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000523.png" height="120px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000534.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000534.png" height="120px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000537.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000537.png" height="120px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000511_MGANs.jpg" target="_blank"><img src="/pictures/ILSVRC2012_val_00000511_MGANs.jpg" height="120px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000522_MGANs.jpg" target="_blank"><img src="/pictures/ILSVRC2012_val_00000522_MGANs.jpg" height="120px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000523_MGANs.jpg" target="_blank"><img src="/pictures/ILSVRC2012_val_00000523_MGANs.jpg" height="120px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000534_MGANs.jpg" target="_blank"><img src="/pictures/ILSVRC2012_val_00000534_MGANs.jpg" height="120px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000537_MGANs.jpg" target="_blank"><img src="/pictures/ILSVRC2012_val_00000537_MGANs.jpg" height="120px" style="max-width:100%;"></a>
+</p>
+
 
 # Acknowledgement
 * We thank Soumith Chintala for sharing his implementation of [Deep Convolutional Generative Adversarial Networks](https://github.com/soumith/dcgan.torch). 
