@@ -38,14 +38,26 @@ The testing process has two steps:
 * Step 2: call "th demo_MGAN.lua" to test the network with new photos.
 
 # Example
-<p>We chose Van Gogh's "Olive Trees with the Alpilles in the Background" as the reference texture.</p>
+We chose Van Gogh's "Olive Trees with the Alpilles in the Background" as the reference texture.
 <p><a href="/Dataset/VG_Alpilles_ImageNet100/Style/VG_Apilles.png" target="_blank"><img src="/Dataset/VG_Alpilles_ImageNet100/Style/VG_Apilles.png" height="220px" style="max-width:100%;"></a></p>
 
-We then transfer 100 ImageNet photos into the same style with the proposed MDANs method. MDANs uses an iterative deconvolutional process, which is similar to "[A Neural Algorithm of Artistic Style](http://arxiv.org/abs/1508.06576)" by Leon A. Gatys et al. and our previous work "[CNNMRF](https://github.com/chuanli11/CNNMRF)". Differently, it uses adversarial training instead of gaussian statistics ("[A Neural Algorithm of Artistic Style](http://arxiv.org/abs/1508.06576)) or nearest neighbour search "[CNNMRF](https://github.com/chuanli11/CNNMRF)". We observed that gaussian statistics works remarkable well for painterly texture, but can sometimes be too flexible for photorealistic textures; nearest neighbor search preserve photorealistic details but can be too rigid for deformable textures. In this sense MDANs offers a balanced option by using advaserial training.
-
-<p>Here are some transferred results from MDAN:
+We then transfer 100 ImageNet photos into the same style with the proposed MDANs method. MDANs take an iterative deconvolutional approach, which is similar to "[A Neural Algorithm of Artistic Style](http://arxiv.org/abs/1508.06576)" by Leon A. Gatys et al. and our previous work "[CNNMRF](https://github.com/chuanli11/CNNMRF)". Differently, it uses adversarial training instead of gaussian statistics ("[A Neural Algorithm of Artistic Style](http://arxiv.org/abs/1508.06576)) or nearest neighbour search "[CNNMRF](https://github.com/chuanli11/CNNMRF)". Here are some transferred results from MDANs:
+<p>
+<a href="/pictures/ILSVRC2012_val_00000003.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000003.png" height="120px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000034.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000034.png" height="120px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000015.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000015.png" height="120px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000032.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000032.png" height="120px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000033.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000033.png" height="120px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000003_MDANs.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000003_MDANs.png" height="120px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000034_MDANs.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000034_MDANs.png" height="120px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000015_MDANs.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000015_MDANs.png" height="120px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000032_MDANs.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000032_MDANs.png" height="120px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000033_MDANs.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000033_MDANs.png" height="120px" style="max-width:100%;"></a>
 </p>
 
+The results look nice, so we know adversarial training is able to produce results that are comparable to previous methods. In other experiments we observed that gaussian statistics work remarkable well for painterly textures, but can sometimes be too flexible for photorealistic textures; nearest-neighbor search preserve photorealistic details but can be too rigid for deformable textures. In this sense MDANs offers a relatively more balanced choice with advaserial training. See our paper for more discussoins.
+
+Like previous deconvolutional methods, MDANs is VERY slow. A Nvidia Titan X takes about one minute to transfer a photo of 384 squared. To make it run faster, we replace the deconvolutional process by a feed-forward network (MGANs). The feed-forward network takes long time to train (45 minutes for this example on a Titan X), but offers significant speed up in testing time. Here are some results from MGANs:
 
 <p>
 <a href="/pictures/ILSVRC2012_val_00000511.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000511.png" height="120px" style="max-width:100%;"></a>
@@ -59,6 +71,20 @@ We then transfer 100 ImageNet photos into the same style with the proposed MDANs
 <a href="/pictures/ILSVRC2012_val_00000534_MGANs.jpg" target="_blank"><img src="/pictures/ILSVRC2012_val_00000534_MGANs.jpg" height="120px" style="max-width:100%;"></a>
 <a href="/pictures/ILSVRC2012_val_00000537_MGANs.jpg" target="_blank"><img src="/pictures/ILSVRC2012_val_00000537_MGANs.jpg" height="120px" style="max-width:100%;"></a>
 </p>
+
+It is our expectation that MGANs will trade quality for speed. The question is how much? Here are some comparisons between the result of MDANs and MGAN
+
+<p>
+<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000501.png" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000501.png" height="120px" style="max-width:100%;"></a>
+<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000501_MDANs.png" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000501_MDANs.png" height="120px" style="max-width:100%;"></a>
+<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000501_MGANs.jpg" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000501_MGANs.jpg" height="120px" style="max-width:100%;"></a>
+<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000502.png" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000502.png" height="120px" style="max-width:100%;"></a>
+<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000502_MDANs.png" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000502_MDANs.png" height="120px" style="max-width:100%;"></a>
+<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000502_MGANs.jpg" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000502_MGANs.jpg" height="120px" style="max-width:100%;"></a>
+</p>
+
+
+
 
 
 # Acknowledgement
