@@ -55,9 +55,9 @@ We then transfer 100 ImageNet photos into the same style with the proposed MDANs
 <a href="/pictures/ILSVRC2012_val_00000033_MDANs.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000033_MDANs.png" height="120px" style="max-width:100%;"></a>
 </p>
 
-The results look nice, so we know adversarial training is able to produce results that are comparable to previous methods. In other experiments we observed that gaussian statistics work remarkable well for painterly textures, but can sometimes be too flexible for photorealistic textures; nearest-neighbor search preserve photorealistic details but can be too rigid for deformable textures. In this sense MDANs offers a relatively more balanced choice with advaserial training. See our paper for more discussoins.
+The results look nice, so we know adversarial training is able to produce results that are comparable to previous methods. In other experiments we observed that gaussian statistics work remarkable well for painterly textures, but can sometimes be too flexible for photorealistic textures; nearest-neighbor search preserve photorealistic details but can be too rigid for deformable textures. In some sense MDANs offers a relatively more balanced choice with advaserial training. See our paper for more discussoins.
 
-Like previous deconvolutional methods, MDANs is VERY slow. A Nvidia Titan X takes about one minute to transfer a photo of 384 squared. To make it run faster, we replace the deconvolutional process by a feed-forward network (MGANs). The feed-forward network takes long time to train (45 minutes for this example on a Titan X), but offers significant speed up in testing time. Here are some results from MGANs:
+Like previous deconvolutional methods, MDANs is VERY slow. A Nvidia Titan X takes about one minute to transfer a photo of 384 squared. To make it faster, we replace the deconvolutional process by a feed-forward network (MGANs). The feed-forward network takes long time to train (45 minutes for this example on a Titan X), but offers significant speed up in testing time. Here are some results from MGANs:
 
 <p>
 <a href="/pictures/ILSVRC2012_val_00000511.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000511.png" height="150px" style="max-width:100%;"></a>
@@ -72,7 +72,7 @@ Like previous deconvolutional methods, MDANs is VERY slow. A Nvidia Titan X take
 <a href="/pictures/ILSVRC2012_val_00000537_MGANs.jpg" target="_blank"><img src="/pictures/ILSVRC2012_val_00000537_MGANs.jpg" height="148px" style="max-width:100%;"></a>
 </p>
 
-It is our expectation that MGANs will trade quality for speed. The question is: how much? Here are some comparisons between the result of MDANs and MGAN:
+It is our expectation that MGANs will trade quality for speed. The question is: how much? Here are some comparisons between the result of MDANs and MGANs:
 
 <p>
 <a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000500.png" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000500.png" height="170px" style="max-width:100%;"></a>
@@ -92,16 +92,18 @@ It is our expectation that MGANs will trade quality for speed. The question is: 
 <a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000507_MGANs.jpg" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000507_MGANs.jpg" height="170px" style="max-width:100%;"></a>
 </p>
 
-In general MDANs (middle) give more stylished results, and does a lot better job for background area that contains homegenous color (the last two cases). But sometimes MGANs (right) is able to produce comparable results (the first two), and runs at least two orders of magnitudes faster. 
+In general MDANs (middle) give more stylished results, and does a much better job at homegenous background areas (the last two cases). But sometimes MGANs (right) is able to produce comparable results (the first two). 
+
+And MGANs run at least two orders of magnitudes faster. 
 
 # Final remark
-There are concurrent works in the direction of making deep texture synthesis faster: [Ulyanov et al.](https://github.com/DmitryUlyanov/texture_nets) and [Johnson et al.](http://arxiv.org/abs/1603.08155). These two alternatives also achieve significant speed up with a feed-forward architecture, trained with the gaussian statsitsics constraint proposed by [Gatys et al.](http://arxiv.org/abs/1508.06576). We believe our method is a complementary to these methods: by changing the gaussian statistics constraint to discrimnative networks trained with Markovian patches, our method can potential model more complex texture manifold (see discussion in the paper).
+There are concurrent works that try to make deep texture synthesis faster. For example, [Ulyanov et al.](https://github.com/DmitryUlyanov/texture_nets) and [Johnson et al.](http://arxiv.org/abs/1603.08155) also achieved significant speed up and very nice results with a feed-forward architecture. Both of these two methods used the gaussian statsitsics constraint proposed by [Gatys et al.](http://arxiv.org/abs/1508.06576). We believe our method is a good complementary: by changing the gaussian statistics constraint to discrimnative networks trained with Markovian patches, it is possible to model more complex texture manifolds (see discussion in our paper).
 
-Last but not the least, here is a prelimiary result by training a MGANs for photorealistic synthesis. It learns from 200k face images from [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html). The network then transfer [VGG_19](http://www.robots.ox.ac.uk/~vgg/research/very_deep/) encoding (layer ReLU5_1) of new face images (left) into something interesting (right). The synthesized faces has the same pose/layout as the ground truth images, but look like different persons. 
+Last, here are some prelimiary results of training a MGANs for photorealistic synthesis. It learns from 200k face images from [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html). The network then transfers [VGG_19](http://www.robots.ox.ac.uk/~vgg/research/very_deep/) encoding (layer ReLU5_1) of new face images (left) into something interesting (right). The synthesized faces have the same poses/layouts as the input faces, but look like different persons :-)
 
 <p>
-<a href="/pictures/face/GT.png" target="_blank"><img src="/pictures/face/GT.png" height="512px" style="max-width:100%;"></a>
-<a href="/pictures/face/Syn.png" target="_blank"><img src="/pictures/face/Syn.png" height="512px" style="max-width:100%;"></a>
+<a href="/pictures/Face/GT.png" target="_blank"><img src="/pictures/Face/GT.png" height="312px" style="max-width:100%;"></a>
+<a href="/pictures/Face/Syn.png" target="_blank"><img src="/pictures/Face/Syn.png" height="312px" style="max-width:100%;"></a>
 </p>
 
 
