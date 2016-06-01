@@ -60,31 +60,49 @@ The results look nice, so we know adversarial training is able to produce result
 Like previous deconvolutional methods, MDANs is VERY slow. A Nvidia Titan X takes about one minute to transfer a photo of 384 squared. To make it run faster, we replace the deconvolutional process by a feed-forward network (MGANs). The feed-forward network takes long time to train (45 minutes for this example on a Titan X), but offers significant speed up in testing time. Here are some results from MGANs:
 
 <p>
-<a href="/pictures/ILSVRC2012_val_00000511.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000511.png" height="120px" style="max-width:100%;"></a>
-<a href="/pictures/ILSVRC2012_val_00000522.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000522.png" height="120px" style="max-width:100%;"></a>
-<a href="/pictures/ILSVRC2012_val_00000523.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000523.png" height="120px" style="max-width:100%;"></a>
-<a href="/pictures/ILSVRC2012_val_00000534.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000534.png" height="120px" style="max-width:100%;"></a>
-<a href="/pictures/ILSVRC2012_val_00000537.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000537.png" height="120px" style="max-width:100%;"></a>
-<a href="/pictures/ILSVRC2012_val_00000511_MGANs.jpg" target="_blank"><img src="/pictures/ILSVRC2012_val_00000511_MGANs.jpg" height="120px" style="max-width:100%;"></a>
-<a href="/pictures/ILSVRC2012_val_00000522_MGANs.jpg" target="_blank"><img src="/pictures/ILSVRC2012_val_00000522_MGANs.jpg" height="120px" style="max-width:100%;"></a>
-<a href="/pictures/ILSVRC2012_val_00000523_MGANs.jpg" target="_blank"><img src="/pictures/ILSVRC2012_val_00000523_MGANs.jpg" height="120px" style="max-width:100%;"></a>
-<a href="/pictures/ILSVRC2012_val_00000534_MGANs.jpg" target="_blank"><img src="/pictures/ILSVRC2012_val_00000534_MGANs.jpg" height="120px" style="max-width:100%;"></a>
-<a href="/pictures/ILSVRC2012_val_00000537_MGANs.jpg" target="_blank"><img src="/pictures/ILSVRC2012_val_00000537_MGANs.jpg" height="120px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000511.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000511.png" height="150px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000522.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000522.png" height="150px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000523.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000523.png" height="150px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000534.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000534.png" height="150px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000537.png" target="_blank"><img src="/pictures/ILSVRC2012_val_00000537.png" height="150px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000511_MGANs.jpg" target="_blank"><img src="/pictures/ILSVRC2012_val_00000511_MGANs.jpg" height="148px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000522_MGANs.jpg" target="_blank"><img src="/pictures/ILSVRC2012_val_00000522_MGANs.jpg" height="148px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000523_MGANs.jpg" target="_blank"><img src="/pictures/ILSVRC2012_val_00000523_MGANs.jpg" height="148px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000534_MGANs.jpg" target="_blank"><img src="/pictures/ILSVRC2012_val_00000534_MGANs.jpg" height="148px" style="max-width:100%;"></a>
+<a href="/pictures/ILSVRC2012_val_00000537_MGANs.jpg" target="_blank"><img src="/pictures/ILSVRC2012_val_00000537_MGANs.jpg" height="148px" style="max-width:100%;"></a>
 </p>
 
-It is our expectation that MGANs will trade quality for speed. The question is how much? Here are some comparisons between the result of MDANs and MGAN
+It is our expectation that MGANs will trade quality for speed. The question is: how much? Here are some comparisons between the result of MDANs and MGAN:
 
 <p>
-<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000501.png" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000501.png" height="120px" style="max-width:100%;"></a>
-<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000501_MDANs.png" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000501_MDANs.png" height="120px" style="max-width:100%;"></a>
-<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000501_MGANs.jpg" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000501_MGANs.jpg" height="120px" style="max-width:100%;"></a>
-<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000502.png" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000502.png" height="120px" style="max-width:100%;"></a>
-<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000502_MDANs.png" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000502_MDANs.png" height="120px" style="max-width:100%;"></a>
-<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000502_MGANs.jpg" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000502_MGANs.jpg" height="120px" style="max-width:100%;"></a>
+<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000500.png" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000500.png" height="170px" style="max-width:100%;"></a>
+<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000500_MDANs.png" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000500_MDANs.png" height="170px" style="max-width:100%;"></a>
+<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000500_MGANs.jpg" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000500_MGANs.jpg" height="170px" style="max-width:100%;"></a>
+<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000501.png" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000501.png" height="170px" style="max-width:100%;"></a>
+<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000501_MDANs.png" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000501_MDANs.png" height="170px" style="max-width:100%;"></a>
+<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000501_MGANs.jpg" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000501_MGANs.jpg" height="170px" style="max-width:100%;"></a>
+<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000502.png" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000502.png" height="210px" style="max-width:100%;"></a>
+<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000502_MDANs.png" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000502_MDANs.png" height="210px" style="max-width:100%;"></a>
+<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000502_MGANs.jpg" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000502_MGANs.jpg" height="210px" style="max-width:100%;"></a>
+<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000503.png" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000503.png" height="170px" style="max-width:100%;"></a>
+<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000503_MDANs.png" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000503_MDANs.png" height="170px" style="max-width:100%;"></a>
+<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000503_MGANs.jpg" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000503_MGANs.jpg" height="170px" style="max-width:100%;"></a>
+<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000507.png" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000507.png" height="170px" style="max-width:100%;"></a>
+<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000507_MDANs.png" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000507_MDANs.png" height="170px" style="max-width:100%;"></a>
+<a href="/pictures/MDANvsMGAN/ILSVRC2012_val_00000507_MGANs.jpg" target="_blank"><img src="/pictures/MDANvsMGAN/ILSVRC2012_val_00000507_MGANs.jpg" height="170px" style="max-width:100%;"></a>
 </p>
 
+In general MDANs (middle) give more stylished results, and does a lot better job for background area that contains homegenous color (the last two cases). But sometimes MGANs (right) is able to produce comparable results (the first two), and runs at least two orders of magnitudes faster. 
 
+# Final remark
+There are concurrent works in the direction of making deep texture synthesis faster: [Ulyanov et al.](https://github.com/DmitryUlyanov/texture_nets) and [Johnson et al.](http://arxiv.org/abs/1603.08155). These two alternatives also achieve significant speed up with a feed-forward architecture, trained with the gaussian statsitsics constraint proposed by [Gatys et al.](http://arxiv.org/abs/1508.06576). We believe our method is a complementary to these methods: by changing the gaussian statistics constraint to discrimnative networks trained with Markovian patches, our method can potential model more complex texture manifold (see discussion in the paper).
 
+Last but not the least, here is a prelimiary result by training a MGANs for photorealistic synthesis. It learns from 200k face images from [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html). The network then transfer [VGG_19](http://www.robots.ox.ac.uk/~vgg/research/very_deep/) encoding (layer ReLU5_1) of new face images (left) into something interesting (right). The synthesized faces has the same pose/layout as the ground truth images, but look like different persons. 
+
+<p>
+<a href="/pictures/face/GT.png" target="_blank"><img src="/pictures/face/GT.png" height="512px" style="max-width:100%;"></a>
+<a href="/pictures/face/Syn.png" target="_blank"><img src="/pictures/face/Syn.png" height="512px" style="max-width:100%;"></a>
+</p>
 
 
 # Acknowledgement
