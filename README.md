@@ -34,8 +34,14 @@ The training process has three main steps:
 
 # Testing
 The testing process has two steps:
-* Step 1: call "th release_MGAN.lua" to concatenate the VGG encoder with the generator. 
-* Step 2: call "th demo_MGAN.lua" to test the network with new photos.
+  * Step 1: call "th release_MGAN.lua" to concatenate the VGG encoder with the generator. 
+  * Step 2: call "th demo_MGAN.lua" to test the network with new photos.
+
+## Display
+You can use the browser based [display package](https://github.com/szym/display) to display the training process for both MDANs and MGANs.
+  * Install: `luarocks install https://raw.githubusercontent.com/szym/display/master/display-scm-0.rockspec`
+  * Call: `th -ldisplay.start`
+  * See results at this URL: [http://localhost:8000](http://localhost:8000)
 
 # Example
 We chose Van Gogh's "Olive Trees with the Alpilles in the Background" as the reference texture.
