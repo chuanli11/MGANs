@@ -26,8 +26,8 @@ stand_imageSize_example = 384 -- the largest dimension for the style image
 stand_atom = 8 -- make sure the image size can be divided by stand_atom
 train_imageSize = 128 -- the actural size for training images. 
 flag_MDAN = true
-flag_AG = false
-flag_MGAN = false
+flag_AG = true
+flag_MGAN = true
 
 -- MDAN parameters
 MDAN_numEpoch = 5 -- number of epoch 
