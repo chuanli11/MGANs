@@ -12,7 +12,7 @@ pl = require('pl.import_into')()
 
 local opt = {}
 
-opt.model_name = '../Dataset/VG_Alpilles_ImageNet100/VG_Alpilles_ImageNet100_epoch5.t7'
+opt.model_name = '../model/VG_Alpilles_ImageNet100_epoch5.t7'
 opt.output_folder_name = '../Dataset/VG_Alpilles_ImageNet100/syn_VG_Alpilles_ImageNet100_epoch5/'
 opt.input_folder_name = '../Dataset/Testing_photo_ImageNet/' 
 

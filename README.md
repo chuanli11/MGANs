@@ -4,15 +4,35 @@ Training & Testing code (torch), pre-trained models and supplementary materials 
 See this [video](https://www.youtube.com/watch?v=PRD8LpPvdHI) for a quick explaination for our method and results. 
 
 # Setup
-This code is based on Torch. It has only been tested on Mac and Ubuntu.
 
-Dependencies:
-* [Torch](https://github.com/torch/torch7)
+As building Torch with the latest CUDA is a troublesome work, we recommend following the following steps to people who want to reproduce the results: 
+It has been tested on Ubuntu with CUDA 10.
 
-For CUDA backend:
+__Step One: Install CUDA 10 and CUDNN 7.6.2__
+
+If you have a fresh Ubuntu, we recommend [Lambda Stack](https://lambdalabs.com/lambda-stack-deep-learning-software) which helps you install the latest drivers, libraries, and frameworks for deep learning. Otherwise, you can install the CUDA toolkit and CUDNN from these links:
 * [CUDA](https://developer.nvidia.com/cuda-downloads)
-* [cudnn](https://developer.nvidia.com/cudnn)
+* [CUDNN](https://developer.nvidia.com/cudnn)
 
+__Step Two: Install Torch__
+```
+git clone https://github.com/nagadomi/distro.git ~/torch --recursive
+cd ~/torch
+./install-deps
+./clean.sh
+./update.sh
+
+. ~/torch/install/bin/torch-activate
+sudo apt-get install libprotobuf-dev protobuf-compiler
+luarocks install loadcaffe
+```
+
+# Demo
+
+```
+cd code
+th demo_MGAN.lua
+```
 
 # Training
 Simply cd into folder "code/" and run the training script.
